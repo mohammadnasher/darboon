@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: darboon-api
+  namespace: darboon
+  labels: { app: darboon, component: api }
+spec:
+  selector: { app: darboon, component: api }
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 3000

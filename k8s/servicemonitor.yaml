@@ -1,0 +1,14 @@
+# Requires the Prometheus Operator CRDs. Scrapes /metrics from the API pods.
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: darboon-api
+  namespace: darboon
+  labels: { app: darboon }
+spec:
+  selector:
+    matchLabels: { app: darboon, component: api }
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 30s
